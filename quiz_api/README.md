@@ -18,7 +18,7 @@ List of technologies used in the project:
 5. How to install a project:
 Step-by-step instructions:
 ### Cloning a repository
-git clone https://github.com/your-repo-name/quiz-api.git
+git clone https://github.com/Lorietta5/Quiz.git
 
 ### Formation of dependencies
 cd quiz_api

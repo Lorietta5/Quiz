@@ -7,3 +7,8 @@ Base.metadata.drop_all(bind=engine)
 Base.metadata.create_all(bind=engine)
 
 print("Tables are created!")
+from sqlalchemy import inspect
+
+inspector = inspect(engine)
+tables = inspector.get_table_names()
+print(f"Existing tables: {tables}")

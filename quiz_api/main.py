@@ -116,8 +116,8 @@ def read_answers(skip: int = 0, limit: int = 10, db: Session = Depends(get_db)):
 @app.get("/answers/{answer_id}", response_model=schemas.Answer)
 def read_answer(answer_id: int, db: Session = Depends(get_db)):
     """
-                    Find an answer by id.
-                    """
+    Find an answer by id.
+    """
     answer = crud.get_answer_by_id(db=db, answer_id=answer_id)
     if not answer:
         raise HTTPException(status_code=404, detail="Answer not found")

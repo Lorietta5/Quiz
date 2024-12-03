@@ -1,9 +1,11 @@
+import logging
 from sqlalchemy.orm import Session
 
 from . import models, schemas
 
 
 # ------------------------ Questions ------------------------
+
 def get_questions(db: Session, skip: int = 0, limit: int = 10):
     return db.query(models.Question).offset(skip).limit(limit).all()
 
@@ -46,7 +48,12 @@ def get_answers(db: Session, skip: int = 0, limit: int = 10):
 
 
 def get_answer_by_id(db: Session, answer_id: int):
-    return db.query(models.Answer).filter(models.Answer.id == answer_id).first()
+    answer = db.query(models.Answer).filter(models.Answer.id == answer_id).first()
+    if answer:
+        logging.info("Found answer: {answer}")
+    else:
+        logging.warning(f"Answer with ID {answer_id} not found.")
+    return answer
 
 
 def create_answer(db: Session, answer: schemas.AnswerCreate):
